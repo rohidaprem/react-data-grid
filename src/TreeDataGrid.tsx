@@ -101,8 +101,8 @@ export function TreeDataGrid<R, SR = unknown, K extends Key = Key>({
       if (rawGroupBy.includes(column.key)) {
         groupBy.push(column.key);
         columns[index] = {
+          frozen: true, // Allows users to decide whether columns should be frozen based on the configuration provided in the columns object
           ...column,
-          frozen: true,
           renderCell: () => null,
           renderGroupCell: column.renderGroupCell ?? renderToggleGroup,
           editable: false

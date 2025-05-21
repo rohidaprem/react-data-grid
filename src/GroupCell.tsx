@@ -15,6 +15,7 @@ interface GroupCellProps<R, SR> {
   isCellSelected: boolean;
   groupColumnIndex: number;
   isGroupByColumn: boolean;
+  isRowColumnGrouping: Boolean;
 }
 
 function GroupCell<R, SR>({
@@ -27,6 +28,7 @@ function GroupCell<R, SR>({
   row,
   groupColumnIndex,
   isGroupByColumn,
+  isRowColumnGrouping,
   toggleGroup: toggleGroupWrapper
 }: GroupCellProps<R, SR>) {
   const { tabIndex, childTabIndex, onFocus } = useRovingTabIndex(isCellSelected);
@@ -35,8 +37,9 @@ function GroupCell<R, SR>({
     toggleGroupWrapper(id);
   }
 
-  // Only make the cell clickable if the group level matches
-  const isLevelMatching = isGroupByColumn && groupColumnIndex === column.idx;
+  // Only make the cell clickable if the group level matches or the key is __group__ 
+  const isLevelMatching = isRowColumnGrouping ? column.key === '__group__' : isGroupByColumn && groupColumnIndex === column.idx;
+  const indentSize = 16; // pixels per level
 
   return (
     <div
@@ -48,7 +51,8 @@ function GroupCell<R, SR>({
       className={getCellClassname(column)}
       style={{
         ...getCellStyle(column),
-        cursor: isLevelMatching ? 'pointer' : 'default'
+        cursor: isLevelMatching ? 'pointer' : 'default',
+        paddingLeft: isLevelMatching && isRowColumnGrouping ? `${row.level * indentSize + 8}px` : undefined
       }}
       onMouseDown={(event) => {
         // prevents clicking on the cell from stealing focus from focusSink

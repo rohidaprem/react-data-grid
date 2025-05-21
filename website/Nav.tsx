@@ -63,6 +63,7 @@ export default function Nav({ direction, onDirectionChange }: Props) {
       <Link to="/ContextMenu">Context Menu</Link>
       <Link to="/CustomizableRenderers">Customizable Renderers</Link>
       <Link to="/RowGrouping">Row Grouping</Link>
+      <Link to="/RowColumnGrouping">Row Column Grouping</Link>
       <Link to="/HeaderFilters">Header Filters</Link>
       <Link to="/InfiniteScrolling">Infinite Scrolling</Link>
       <Link to="/MasterDetail">Master Detail</Link>

@@ -98,6 +98,8 @@ export interface ColumnGroup<R, SR = unknown> {
   readonly name: string | ReactElement;
   readonly headerCellClass?: Maybe<string>;
   readonly children: readonly ColumnOrColumnGroup<R, SR>[];
+    /** A unique key to distinguish each column */
+  readonly key?: Maybe<string>;
 }
 
 export interface CalculatedColumnParent<R, SR> {

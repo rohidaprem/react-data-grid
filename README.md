@@ -587,6 +587,26 @@ test('grid', () => {
 
 ###### `groupIdGetter?: Maybe<(groupKey: string, parentId?: string) => string>`
 
+##### `<TreeDataGridRCG />`
+
+`TreeDataGridRCG is a component built on top of TreeDataGrid to support both row and column grouping. It extends the Treegrid pattern with additional capabilities for column-level grouping. At the moment, TreeDataGridRCG does not support onFill and isRowSelectionDisabled props.`
+
+### TreeDataGridRCGProps
+
+##### `groupBy?: Maybe<readonly string[]>`
+
+##### `columnGroupBy?: Maybe<readonly string[]>`
+
+##### `rowGrouper?: Maybe<(rows: readonly R[], columnKey: string) => Record<string, readonly R[]>>`
+
+##### `columnGrouper?: Maybe<(columns: readonly C[], columnKey: string) => Record<string, readonly C[]>>`
+
+##### `expandedGroupIds?: Maybe<ReadonlySet<unknown>>`
+
+##### `onExpandedGroupIdsChange?: Maybe<(expandedGroupIds: Set<unknown>) => void>`
+
+##### `groupIdGetter?: Maybe<(groupKey: string, parentId?: string) => string>`
+
 #### `<TextEditor />`
 
 ##### Props
